@@ -1,0 +1,20 @@
+.button {
+    background: #38da1f;
+    border-radius: 11px;
+    width: 160px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin-top: 64px;
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}

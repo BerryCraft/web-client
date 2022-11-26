@@ -1,1 +1,18 @@
-@import "_null";
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body,
+html {
+    height: 100vh;
+}
