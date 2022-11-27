@@ -6,10 +6,10 @@ import '@/styles/form.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
 
 const Login = () => {
-	const [loginDTO, setLoginDTO] = useState<LoginDTO>({
-		login: '',
-		password: '',
-	})
+	// const [loginDTO, setLoginDTO] = useState<LoginDTO>({
+	// 	login: '',
+	// 	password: '',
+	// })
 
 	const {
 		register,
@@ -23,10 +23,26 @@ const Login = () => {
 	return (
 		<div className={styles.wrapper}>
 			<form onSubmit={handleSubmit(handleLogin)}>
-				<input type='text' placeholder='Логин' />
-				<input type='password' placeholder='Паполь' />
+				<input
+					type='text'
+					placeholder='Логин'
+					{...(register('login'), { required: true })}
+				/>
+				<input
+					type='password'
+					placeholder='Паполь'
+					{...(register('password'), { required: true })}
+				/>
 				<button type='submit'>Войти</button>
 			</form>
+			{/* errors */}
+
+			{/* <div className={styles.errors}>
+				<div>Login</div>
+				<div>Password</div>
+			</div> */}
+
+			{/* errors */}
 		</div>
 	)
 }
