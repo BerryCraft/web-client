@@ -8,11 +8,6 @@ import authService from '@/services/authService'
 import api from '@/config/api/api.config'
 
 const Login = () => {
-	// const [loginDTO, setLoginDTO] = useState<LoginDTO>({
-	// 	login: '',
-	// 	password: '',
-	// })
-
 	const {
 		register,
 		handleSubmit,
