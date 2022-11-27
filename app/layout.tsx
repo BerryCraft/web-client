@@ -1,5 +1,7 @@
+import Footer from 'components/footer/Footer'
 import styles from '../styles/layout.module.scss'
 
+import '@/styles/globals.scss'
 export default function RootLayout({
 	children,
 }: {
@@ -8,7 +10,10 @@ export default function RootLayout({
 	return (
 		<html>
 			<head />
-			<body className={styles.wrapper}>{children}</body>
+			<body className={styles.wrapper}>
+				{children}
+				<Footer />
+			</body>
 		</html>
 	)
 }
