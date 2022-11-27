@@ -1,9 +1,9 @@
-import MainHeader from '@/components/main/header/Header'
-import Hero from 'components/hero/Hero'
-import SignUp from 'components/signup/SignUp'
+import News from '@/components/index/news/News'
+import { images } from '@/helpers/imageLoader'
+import styles from './index.module.scss'
 
 const HomePage = () => {
-	return <></>
+	return <News />
 }
 
 export default HomePage
