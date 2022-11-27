@@ -5,9 +5,9 @@ type ApiConfig = {
 class Api {
 	// 51.210.69.86:3500
 	readonly config: ApiConfig = {
-		baseURL: '',
+		baseURL: 'http://localhost:3500/api',
 		headers: {
-			'Content-Type': 'application/json',
+			'Content-Type': 'application/json; charset=utf-8',
 			'Access-Control-Allow-Origin': '*',
 		},
 	}
@@ -16,38 +16,41 @@ class Api {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
 		})
-		return res.json()
+		return await res.json()
 	}
 	async post(url: string, body: object) {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
 			method: 'POST',
+
 			body: JSON.stringify(body),
 		})
-		return res.json()
+		return await res.json()
 	}
 	async patch(url: string, body: object) {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
 			method: 'PATCH',
+
 			body: JSON.stringify(body),
 		})
-		return res.json()
+		return await res.json()
 	}
 	async put(url: string, body: object) {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
 			method: 'PUT',
+
 			body: JSON.stringify(body),
 		})
-		return res.json()
+		return await res.json()
 	}
 	async delete(url: string) {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
 			method: 'DELETE',
 		})
-		return res.json()
+		return await res.json()
 	}
 }
 
