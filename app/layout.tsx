@@ -1,7 +1,13 @@
-import Footer from 'components/footer/Footer'
-import styles from '../styles/layout.module.scss'
+'use client'
+import MainHeader from '@/components/main/header/Header'
+import Nav from '@/components/main/header/nav/Nav'
+import { store } from '@/store/store'
 
+import styles from '../styles/layout.module.scss'
 import '@/styles/globals.scss'
+import { Provider } from 'react-redux'
+import Footer from '@/components/footer/Footer'
+
 export default function RootLayout({
 	children,
 }: {
@@ -10,9 +16,15 @@ export default function RootLayout({
 	return (
 		<html>
 			<head />
-			<body className={styles.wrapper}>
-				{children}
-				<Footer />
+			<body>
+				<Provider store={store}>
+					<MainHeader />
+					<Nav />
+					<div className={styles.wrapper}>
+						{children}
+						<Footer />
+					</div>
+				</Provider>
 			</body>
 		</html>
 	)

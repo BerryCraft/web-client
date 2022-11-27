@@ -6,7 +6,10 @@
     border: 0;
     box-sizing: border-box;
 }
-
+ul,
+ol {
+    list-style: none;
+}
 a,
 a:visited {
     text-decoration: none;

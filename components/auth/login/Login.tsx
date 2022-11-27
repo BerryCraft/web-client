@@ -1,13 +1,19 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from './login.module.scss'
 import '@/styles/form.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
 import authService from '@/services/authService'
 import api from '@/config/api/api.config'
+import { useActions } from '@/hooks/useActions'
+
+import { User } from '@/types/entities/user.entity'
+import { useTypedSelector } from '@/hooks/useTypedSelector'
 
 const Login = () => {
+	const { login } = useActions()
+	const loggedIn = useTypedSelector(state => state.user.user)
 	const {
 		register,
 		handleSubmit,
@@ -16,9 +22,13 @@ const Login = () => {
 
 	const handleLogin: SubmitHandler<LoginDTO> = async (dto: LoginDTO) => {
 		console.log(dto)
-		const user = await authService.login(dto)
-		console.log(user)
+		const user: { user: User; accesToken: string } = await authService.login(
+			dto
+		)
+
+		login(user.user)
 	}
+
 	return (
 		<div className={styles.wrapper}>
 			<form onSubmit={handleSubmit(handleLogin)}>
@@ -32,6 +42,7 @@ const Login = () => {
 					placeholder='Паполь'
 					{...register('password', { required: true })}
 				/>
+
 				<button type='submit'>Войти</button>
 			</form>
 			{/* errors */}

@@ -1,0 +1,24 @@
+@import "@/styles/_fonts.scss";
+.buttons {
+    display: flex;
+    div {
+        margin: 0 15px;
+        min-width: 2px;
+        min-height: 100%;
+        background: #000;
+    }
+    button {
+        padding: 11px 28px;
+        font-family: $fewText;
+        border-radius: 13px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        background: #e9c924;
+        transition: 0.3s ease all;
+        &:hover {
+            padding: 0 35px;
+        }
+    }
+}

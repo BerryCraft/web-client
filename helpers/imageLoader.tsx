@@ -1,3 +1,3 @@
 import berry from '../assets/img/berryCraftHeroIcon.png'
-
-export const images = { berry }
+import logo from '@/assets/img/logo.png'
+export const images = { berry, logo }
