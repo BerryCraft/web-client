@@ -5,7 +5,7 @@ type ApiConfig = {
 class Api {
 	// 51.210.69.86:3500
 	readonly config: ApiConfig = {
-		baseURL: 'http://localhost:3500/api',
+		baseURL: 'http://51.210.69.86:3500/api',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
 			'Access-Control-Allow-Origin': '*',

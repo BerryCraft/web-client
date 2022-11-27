@@ -1,14 +1,13 @@
-import Login from "components/auth/login/Login";
-import Footer from "components/footer/Footer";
-import Hero from "components/hero/Hero";
+import Login from 'components/auth/login/Login'
+import Footer from 'components/footer/Footer'
+import Hero from 'components/hero/Hero'
 
 const page = () => {
-  return (
-    <>
-      <Hero />
-      <Login />
-    </>
-  );
-};
+	return (
+		<>
+			<Login />
+		</>
+	)
+}
 
-export default page;
+export default page

@@ -10,6 +10,7 @@ import { useActions } from '@/hooks/useActions'
 
 import { User } from '@/types/entities/user.entity'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
 	const { login } = useActions()
@@ -19,7 +20,7 @@ const Login = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<LoginDTO>()
-
+	const router = useRouter()
 	const handleLogin: SubmitHandler<LoginDTO> = async (dto: LoginDTO) => {
 		console.log(dto)
 		const user: { user: User; accesToken: string } = await authService.login(
@@ -27,6 +28,7 @@ const Login = () => {
 		)
 
 		login(user.user)
+		router.push('/')
 	}
 
 	return (
