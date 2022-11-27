@@ -34,6 +34,14 @@ class Api {
 		})
 		return res.json()
 	}
+	async put(url: string, body: object) {
+		const res = await fetch(this.config.baseURL + url, {
+			headers: this.config.headers,
+			method: 'PUT',
+			body: JSON.stringify(body),
+		})
+		return res.json()
+	}
 	async delete(url: string) {
 		const res = await fetch(this.config.baseURL + url, {
 			headers: this.config.headers,
