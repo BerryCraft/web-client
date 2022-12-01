@@ -34,14 +34,16 @@ const Login = () => {
 	return (
 		<div className={styles.wrapper}>
 			<form onSubmit={handleSubmit(handleLogin)}>
+				<div className='field__title'>Логин</div>
 				<input
 					type='text'
 					placeholder='Логин'
 					{...register('login', { required: true })}
 				/>
+				<div className='field__title'>Пароль</div>
 				<input
 					type='password'
-					placeholder='Паполь'
+					placeholder='Пароль'
 					{...register('password', { required: true })}
 				/>
 
