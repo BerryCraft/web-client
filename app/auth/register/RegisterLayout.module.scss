@@ -2,12 +2,12 @@
 
 .wrapper {
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   position: relative;
-  background: url("../../../assets/img/login-background.jpg");
+  background: url("../../../assets/img/register-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

@@ -11,17 +11,19 @@ form {
     height: 56px;
     margin-bottom: 53px;
     background: #d9d9d9;
+    font-size: 28px;
   }
   button {
-    background: #38da1f;
-    border-radius: 11px;
-    width: 160px;
+    background: #909314;
+    border-radius: 13px;
+    width: 360px;
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
     color: #000;
+    font-weight: bold;
   }
 }
 
@@ -32,4 +34,5 @@ form {
   font-family: $actor;
   color: #000000;
   margin-bottom: 24px;
+  font-weight: bold;
 }
