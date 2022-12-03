@@ -13,6 +13,8 @@ const Header = () => {
 			return 'Авторизация'
 		} else if (pathName == '/auth/register') {
 			return 'Регистрация'
+		} else if (pathName == '/profile') {
+			return 'Профиль'
 		}
 	}
 	return (

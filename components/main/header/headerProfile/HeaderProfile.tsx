@@ -8,7 +8,7 @@ const AuthButtons = () => {
 	const currentUser: User | null = useTypedSelector(state => state.user.user)
 	return <>{!currentUser ? <SignUp /> : 
 	<div className={styles.profile}>
-		<p>{currentUser.login}</p>
+		<Link href={'/profile'}><p>{currentUser.login}</p></Link>
 	</div>}</>
 }
 
