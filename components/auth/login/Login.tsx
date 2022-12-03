@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from './login.module.scss'
-import '@/styles/form.scss'
+import '@/styles/login-form.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
 import authService from '@/services/authService'
 import api from '@/config/api/api.config'
