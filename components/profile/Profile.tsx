@@ -18,6 +18,9 @@ const Profile = () => {
 			<div className={styles.data}>
 			<div className={styles.title}>{!currentUser ? <p>Null</p> : <p>{currentUser.login}</p>}</div>
 			<div className={styles.field}></div>
+			<button className={styles.logout}>
+				Выйти из аккаунта
+			</button>
 			</div>
 		</div>
 	)

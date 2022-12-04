@@ -57,4 +57,17 @@
         width: 520px;
         height: 320px;
     }
+
+    .logout {
+        width: 200px;
+        height: 60px;
+        font-size: 19px;
+        background: #000;
+        border-radius: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        margin: 30px auto;
+    }
 }
