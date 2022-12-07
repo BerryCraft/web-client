@@ -11,9 +11,11 @@ import { useActions } from '@/hooks/useActions'
 import { User } from '@/types/entities/user.entity'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
 import { useRouter } from 'next/navigation'
+import { useCookies } from 'react-cookie'
 
 const Login = () => {
 	const { login } = useActions()
+	const [cookie, setCookie] = useCookies(['user'])
 	const loggedIn = useTypedSelector(state => state.user.user)
 	const {
 		register,
@@ -26,7 +28,11 @@ const Login = () => {
 		const user: { user: User; accesToken: string } = await authService.login(
 			dto
 		)
-
+		setCookie('user', JSON.stringify(user.user), {
+			path: '/',
+			maxAge: 120,
+			sameSite: true
+		})
 		login(user.user)
 		router.push('/')
 	}
