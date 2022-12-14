@@ -1,73 +1,73 @@
-@import "@/styles/_fonts.scss";
+@import '@/styles/_fonts.scss';
 
 .wrapper {
-    height: 100vh;
-    display: flex;
-    max-width: 1150px;
-    padding: 30px 0;
-    justify-content: space-between;
+  height: 100vh;
+  display: flex;
+  max-width: 1150px;
+  padding: 30px 0;
+  justify-content: space-between;
 }
 
 .title {
-    font-family: $fewText;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 51px;
-    color: #ffffff;
-    mix-blend-mode: difference;
-    margin-bottom: 44px;
-    text-align: center;
+  font-family: $fewText;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 51px;
+  color: #ffffff;
+  mix-blend-mode: difference;
+  margin-bottom: 44px;
+  text-align: center;
 }
 
 .field {
-    background: #d9d9d9;
-    border-radius: 13px;
+  background: #fff;
+  border-radius: 13px;
 }
 
 .skin {
-    .field {
-        width: 410px;
-        height: 500px;
-    }
+  .field {
+    width: 410px;
+    height: 500px;
+  }
 
-    .upload {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 330px;
-        margin: 20px auto;
-        color: #ffffff;
+  .upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 330px;
+    margin: 20px auto;
+    color: #ffffff;
 
-        .button {
-            width: 140px;
-            height: 35px;
-            font-size: 16px;
-            background: #000;
-            border-radius: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .button {
+      width: 140px;
+      height: 35px;
+      font-size: 16px;
+      background: #000;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
 }
 
 .data {
-    .field {
-        width: 520px;
-        height: 320px;
-    }
+  .field {
+    width: 520px;
+    height: 320px;
+  }
 
-    .logout {
-        width: 200px;
-        height: 60px;
-        font-size: 19px;
-        background: #000;
-        border-radius: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        margin: 30px auto;
-    }
+  .logout {
+    width: 200px;
+    height: 60px;
+    font-size: 19px;
+    background: #000;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 30px auto;
+  }
 }

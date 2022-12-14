@@ -3,16 +3,20 @@ import { images } from '@/helpers/imageLoader'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
 import { User } from '@/types/entities/user.entity'
 import styles from './profile.module.scss'
-import { useCookies } from 'react-cookie'
 import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
+import { useActions } from '@/hooks/useActions'
 const Profile = () => {
-  const user: User | undefined = JSON.parse(Cookies.get('user')!)
-  const currentUser: User | null = useTypedSelector(state => state.user.user)
-  return (
+  const user = Cookies.get('user') && JSON.parse(Cookies.get('user')!)
+  const userState: User | null = useTypedSelector(state => state.user.user)
+  const router = useRouter()
+  const { logout } = useActions()
+  return !userState ? (
+    router.push('/')
+  ) : (
     <div className={styles.wrapper}>
       <div className={styles.skin}>
         <div className={styles.title}>Скин</div>
-        <div className={styles.field}></div>
         <div className={styles.upload}>
           <p>Смена скина</p>
           <div className={styles.button}>Загрузить</div>
@@ -20,13 +24,22 @@ const Profile = () => {
       </div>
       <div className={styles.data}>
         <div className={styles.title}>
-          {!currentUser ? <p>Null</p> : <p>{currentUser.login}</p>}
+          {!userState ? <p>Null</p> : <p>{userState.login}</p>}
         </div>
         <div className={styles.field}>
-          <p>UserName: {user!.login}</p>
-          <p>Email: {user!.email}</p>
+          <p>UserName: {userState!.login}</p>
+          <p>Email: {userState!.email}</p>
         </div>
-        <button className={styles.logout}>Выйти из аккаунта</button>
+        <button
+          onClick={e => {
+            router.push('/')
+            logout()
+            Cookies.remove('user')
+          }}
+          className={styles.logout}
+        >
+          Выйти из аккаунта
+        </button>
       </div>
     </div>
   )
