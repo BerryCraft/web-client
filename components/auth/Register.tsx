@@ -5,9 +5,11 @@ import { useActions } from '@/hooks/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector'
 import { User } from '@/types/entities/user.entity'
 import authService from '@/services/authService'
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
 const Register = () => {
+	const router = useRouter()
 	const { login } = useActions()
-	const loggedIn = useTypedSelector(state => state.user.user)
 	const handleRegister: SubmitHandler<RegisterDTO> = async (
 		dto: RegisterDTO
 	) => {
@@ -15,6 +17,9 @@ const Register = () => {
 		const user: { user: User; accesToken: string } = await authService.register(
 			dto
 		)
+		Cookies.set('user', JSON.stringify(user), { expires: 120 })
+		login(user.user)
+		router.push('/')
 	}
 	const {
 		register,

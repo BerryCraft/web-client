@@ -1,12 +1,23 @@
+import { useActions } from '@/hooks/useActions'
+import authService from '@/services/authService'
 import styles from '@/styles/components/auth/login.module.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
-import { useState } from 'react'
+import { User } from '@/types/entities/user.entity'
+import Cookies from 'js-cookie'
+import router from 'next/router'
+
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const Login = () => {
-	const [error, setError] = useState(false)
+	const { login } = useActions()
 	const handleLogin: SubmitHandler<LoginDTO> = async (dto: LoginDTO) => {
 		console.log(dto)
+		const user: { user: User; accesToken: string } = await authService.login(
+			dto
+		)
+		Cookies.set('user', JSON.stringify(user), { expires: 120 })
+		login(user.user)
+		router.push('/')
 	}
 	const {
 		register,
