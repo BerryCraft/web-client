@@ -1,0 +1,12 @@
+@import "@/styles/_fonts.scss";
+.profile {
+    background: #d39315;
+    border-radius: 13px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: $ff;
+}

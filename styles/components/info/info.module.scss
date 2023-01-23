@@ -1,0 +1,65 @@
+@import "@/styles/_fonts.scss";
+
+.wrapper {
+    margin: auto 0;
+
+    .download {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 60px 0;
+
+        button {
+            width: 300px;
+            border-radius: 35px;
+            background-color: #e9c924;
+            border: 3px solid #000;
+            font-size: 34px;
+            font-weight: bold;
+            padding: 5px 5px;
+            transition: 0.4s;
+        }
+
+        button:hover {
+            padding: 10px 10px;
+            font-size: 38px;
+        }
+    }
+
+    .monitoring {
+        width: 296px;
+        height: 175px;
+        padding: 22px;
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0 0 60px 0;
+        background: #428542;
+        color: #fff;
+        border-radius: 8px;
+        border: 3px solid #d39315;
+
+        .title {
+            margin: 0 0 15px 0;
+        }
+
+        .berrycraft {
+            margin: auto 0;
+            font-size: 24px;
+        }
+        text-align: center;
+    }
+
+    .groups {
+        padding: 22px;
+        width: 296px;
+        height: 175px;
+        font-size: 20px;
+        font-weight: 400;
+        background: #428542;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        border-radius: 8px;
+        border: 3px solid #d39315;
+    }
+}

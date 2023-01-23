@@ -1,0 +1,23 @@
+@import "@/styles/_fonts.scss";
+
+.wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.header {
+    height: 81px;
+    width: 100vw;
+    background: #707b2d;
+}
+
+.title {
+    font-family: $ff;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 71px;
+}
