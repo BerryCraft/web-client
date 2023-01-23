@@ -1,10 +1,11 @@
-import LoginLayout from '@/layouts/login.layout'
+import Register from '@/components/auth/Register'
+import AuthLayout from '@/layouts/auth.layout'
 
 const RegisterPage = () => {
 	return (
-		<LoginLayout>
-			<></>
-		</LoginLayout>
+		<AuthLayout>
+			<Register />
+		</AuthLayout>
 	)
 }
 

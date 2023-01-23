@@ -1,11 +1,11 @@
 import Login from '@/components/auth/Login'
-import LoginLayout from '@/layouts/login.layout'
+import AuthLayout from '@/layouts/auth.layout'
 
 const LoginPage = () => {
 	return (
-		<LoginLayout>
+		<AuthLayout>
 			<Login />
-		</LoginLayout>
+		</AuthLayout>
 	)
 }
 

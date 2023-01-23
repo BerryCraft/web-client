@@ -1,11 +1,20 @@
 import { RegisterDTO } from '@/types/dto/register.dto'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from '@/styles/components/auth/register.module.scss'
+import { useActions } from '@/hooks/useActions'
+import { useTypedSelector } from '@/hooks/useTypedSelector'
+import { User } from '@/types/entities/user.entity'
+import authService from '@/services/authService'
 const Register = () => {
+	const { login } = useActions()
+	const loggedIn = useTypedSelector(state => state.user.user)
 	const handleRegister: SubmitHandler<RegisterDTO> = async (
 		dto: RegisterDTO
 	) => {
 		console.log(dto)
+		const user: { user: User; accesToken: string } = await authService.register(
+			dto
+		)
 	}
 	const {
 		register,

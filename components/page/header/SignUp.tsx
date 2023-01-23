@@ -1,12 +1,15 @@
-import styles from '@/styles/components/page/header/signup.module.scss'
 import Link from 'next/link'
-
+import styles from '@/styles/components/page/header/signup.module.scss'
 const SignUp = () => {
 	return (
-		<div className={styles.wrapper}>
-			<div className={styles.button}>
+		<div className={styles.buttons}>
+			<button>
+				<Link href={'/auth/register'}>Регистрация</Link>
+			</button>
+			<div></div>
+			<button>
 				<Link href={'/auth/login'}>Войти</Link>
-			</div>
+			</button>
 		</div>
 	)
 }
