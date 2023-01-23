@@ -1,0 +1,16 @@
+@import "_null";
+@import "_fonts";
+body,
+html {
+  height: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgb(70, 175, 13);
+}
+body::-webkit-scrollbar-track {
+  background: rgba(122, 255, 50, 0.694);
+}
