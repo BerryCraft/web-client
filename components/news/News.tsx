@@ -1,4 +1,3 @@
-import newsService from '@/services/newsService'
 import styles from '@/styles/components/news/news.module.scss'
 import IPost from '@/types/structs/IPost'
 import Link from 'next/link'
