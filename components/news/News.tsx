@@ -1,10 +1,15 @@
+import newsService from '@/services/newsService'
 import styles from '@/styles/components/news/news.module.scss'
 import IPost from '@/types/structs/IPost'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
 
-const News = () => {
-	// for now
-	const posts = [] as any[]
+type Props = {
+	posts: IPost[]
+}
+
+const News = ({ posts }: Props) => {
+	posts = posts.reverse()
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>Новости</div>
