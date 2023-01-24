@@ -57,7 +57,7 @@ const Profile = () => {
 			</div>
 			<div className={styles.data}>
 				<div className={styles.title}>
-					{!userState ? <p>Null</p> : <p>{userState.login}</p>}
+					<p>{userState!.login}</p>
 				</div>
 				<div className={styles.field}>
 					<p>Логин: {userState!.login}</p>
@@ -68,8 +68,8 @@ const Profile = () => {
 				<button
 					onClick={e => {
 						router.push('/')
-						logout()
 						Cookies.remove('user')
+						logout()
 					}}
 					className={styles.logout}
 				>
