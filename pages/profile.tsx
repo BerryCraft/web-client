@@ -1,10 +1,11 @@
 import Meta from '@/components/page/Meta'
 import Profile from '@/components/profile/Profile'
+import RootLayout from '@/layouts/root.layout'
 import styles from '@/styles/profile.module.scss'
 
 const ProfilePage = () => {
 	return (
-		<>
+		<RootLayout>
 			<Meta
 				title='BerryCraft | Profile'
 				description='BerryCraft | Профиль Игрока'
@@ -14,7 +15,7 @@ const ProfilePage = () => {
 					<Profile />
 				</div>
 			</div>
-		</>
+		</RootLayout>
 	)
 }
 
