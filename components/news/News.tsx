@@ -1,7 +1,6 @@
 import newsService from '@/services/newsService'
 import styles from '@/styles/components/news/news.module.scss'
 import IPost from '@/types/structs/IPost'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
 
 type Props = {
