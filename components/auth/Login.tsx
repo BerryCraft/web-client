@@ -15,7 +15,7 @@ const Login = () => {
 		const user: { user: User; accesToken: string } = await authService.login(
 			dto
 		)
-		Cookies.set('user', JSON.stringify(user), { expires: 120 })
+		Cookies.set('user', JSON.stringify(user), { expires: 1200 })
 		login(user.user)
 		router.push('/')
 	}

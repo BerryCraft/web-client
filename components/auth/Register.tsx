@@ -17,7 +17,7 @@ const Register = () => {
 		const user: { user: User; accesToken: string } = await authService.register(
 			dto
 		)
-		Cookies.set('user', JSON.stringify(user), { expires: 120 })
+		Cookies.set('user', JSON.stringify(user), { expires: 1200 })
 		login(user.user)
 		router.push('/')
 	}
