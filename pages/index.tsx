@@ -1,7 +1,7 @@
 import Info from '@/components/info/Info'
 import News from '@/components/news/News'
 import Meta from '@/components/page/Meta'
-import { VkApiHandler } from '@/external/vk/vkApi'
+import { VkApiHandler } from '@/external/vk/VkApiHandler'
 import RootLayout from '@/layouts/root.layout'
 import newsService from '@/services/newsService'
 import styles from '@/styles/index.module.scss'
@@ -12,8 +12,6 @@ const HomePage = ({
 	posts,
 	members,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	console.log('members')
-	console.log(members)
 	return (
 		<RootLayout>
 			<Meta title='BerryCraft' description='BerryCraft' />

@@ -1,4 +1,4 @@
-import { VkApiHandler } from '@/external/vk/vkApi'
+import { VkApiHandler } from '@/external/vk/VkApiHandler'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
