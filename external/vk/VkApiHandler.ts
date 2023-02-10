@@ -1,9 +1,8 @@
-
 interface RequestConfig {
 	uri: string
 	headers: HeadersInit
 }
-export class VkApiHandler {
+export default class VkApiHandler {
 	private static token: string = process.env.VK_API_TOKEN || ''
 
 	private static requestConfig: RequestConfig = {
