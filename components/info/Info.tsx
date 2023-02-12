@@ -26,7 +26,7 @@ const Info = (props: Props) => {
 				<div className={styles.vk}>
 					Группа ВК <br />
 					<span>
-						{vkApiError ? 'Api Error' : props.vkMembersCount.responce.count}
+						{vkApiError ? 'Api Error' : props.vkMembersCount.response.count}
 					</span>
 				</div>
 				<div className={styles.discord}>

@@ -4,12 +4,10 @@ interface RequestConfig {
 }
 
 export default class DiscordApiHandler {
-	private static token: string = process.env.VK_API_TOKEN || ''
-	private static clientID: string =
-		process.env.DISCORD_CLIENT_ID || '1073664165413138432'
+	public static getServerMembers() {
+		const headers = new Headers()
+		headers.append('Content-Type', 'application/json')
 
-	private static clientSecret: string =
-		process.env.DISCORD_CLIENT_SECRET || 'wXiVgbutW5MRlP9dyoxyramuwArP2y3U'
-
-	public static getServerMembers() {}
+		fetch('https://eorblt45n7i2rtx.m.pipedream.net')
+	}
 }

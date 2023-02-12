@@ -15,11 +15,9 @@ export default class VkApiHandler {
 	}
 
 	public static async countGroupMembers() {
-		if (this.token !== '') {
-			const res = await fetch(this.requestConfig.uri, {
-				headers: this.requestConfig.headers,
-			})
-			return await res.json()
-		}
+		const res = await fetch(this.requestConfig.uri, {
+			headers: this.requestConfig.headers,
+		})
+		return await res.json()
 	}
 }
