@@ -6,7 +6,6 @@ import RootLayout from '@/layouts/root.layout'
 import newsService from '@/services/newsService'
 import styles from '@/styles/index.module.scss'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useEffect } from 'react'
 
 const HomePage = ({
 	posts,
@@ -18,10 +17,7 @@ const HomePage = ({
 			<div className={styles.background}>
 				<div className={styles.wrapper}>
 					<News posts={posts} />
-					<Info
-						vkMembersCount={members.response.count}
-						discordMembersCount={100}
-					/>
+					<Info vkMembersCount={members} discordMembersCount={100} />
 				</div>
 			</div>
 		</RootLayout>
