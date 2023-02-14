@@ -8,6 +8,9 @@ type Props = {
 const Info = (props: Props) => {
 	console.log('vk state')
 	console.log(props.vkMembersCount)
+	console.log('===========')
+	console.log('discord state')
+	console.log(props.discordMembersCount)
 	let vkApiError = false
 	if (props.vkMembersCount.hasOwnProperty('error')) vkApiError = true
 	return (
@@ -30,7 +33,7 @@ const Info = (props: Props) => {
 					</span>
 				</div>
 				<div className={styles.discord}>
-					Группа ДС <span>{props.discordMembersCount}</span>{' '}
+					Группа ДС <br /> <span>{props.discordMembersCount}</span>{' '}
 				</div>
 			</div>
 		</div>

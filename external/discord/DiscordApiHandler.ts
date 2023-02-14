@@ -4,10 +4,15 @@ interface RequestConfig {
 }
 
 export default class DiscordApiHandler {
-	public static getServerMembers() {
-		const headers = new Headers()
-		headers.append('Content-Type', 'application/json')
+	private static url: string = process.env.DISCORD_PIPEDREAM_LINK || ''
+	public static async getServerMembers() {
+		const res = await fetch(this.url, {
+			headers: { 'Content-Type': 'application/json' },
+		})
+		const resJson = await res.json()
 
-		fetch('https://eorblt45n7i2rtx.m.pipedream.net')
+		const discordMembers = Object.keys(resJson).length
+
+		return discordMembers
 	}
 }
