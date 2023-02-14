@@ -1,6 +1,18 @@
 import styles from '@/styles/components/info/info.module.scss'
 
-const Info = () => {
+type Props = {
+	vkMembersCount: any
+	discordMembersCount: any
+}
+
+const Info = (props: Props) => {
+	console.log('vk state')
+	console.log(props.vkMembersCount)
+	console.log('===========')
+	console.log('discord state')
+	console.log(props.discordMembersCount)
+	let vkApiError = false
+	if (props.vkMembersCount.hasOwnProperty('error')) vkApiError = true
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.download}>
@@ -14,8 +26,15 @@ const Info = () => {
 				</div>
 			</div>
 			<div className={styles.groups}>
-				<div className={styles.vk}>Группа ВК</div>
-				<div className={styles.discord}>Группа ДС</div>
+				<div className={styles.vk}>
+					Группа ВК <br />
+					<span>
+						{vkApiError ? 'Api Error' : props.vkMembersCount.response.count}
+					</span>
+				</div>
+				<div className={styles.discord}>
+					Группа ДС <br /> <span>{props.discordMembersCount}</span>{' '}
+				</div>
 			</div>
 		</div>
 	)
