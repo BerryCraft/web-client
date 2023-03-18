@@ -13,44 +13,64 @@ class Api {
 	}
 
 	async get(url: string) {
-		const res = await fetch(this.config.baseURL + url, {
-			headers: this.config.headers,
-		})
-		return await res.json()
+		try {
+			const res = await fetch(this.config.baseURL + url, {
+				headers: this.config.headers,
+			})
+			return await res.json()
+		} catch (e) {
+			return null
+		}
 	}
 	async post(url: string, body: object) {
-		const res = await fetch(this.config.baseURL + url, {
-			headers: this.config.headers,
-			method: 'POST',
+		try {
+			const res = await fetch(this.config.baseURL + url, {
+				headers: this.config.headers,
+				method: 'POST',
 
-			body: JSON.stringify(body),
-		})
-		return await res.json()
+				body: JSON.stringify(body),
+			})
+			return await res.json()
+		} catch (e) {
+			return null
+		}
 	}
 	async patch(url: string, body: object) {
-		const res = await fetch(this.config.baseURL + url, {
-			headers: this.config.headers,
-			method: 'PATCH',
+		try {
+			const res = await fetch(this.config.baseURL + url, {
+				headers: this.config.headers,
+				method: 'PATCH',
 
-			body: JSON.stringify(body),
-		})
-		return await res.json()
+				body: JSON.stringify(body),
+			})
+			return await res.json()
+		} catch (e) {
+			return null
+		}
 	}
 	async put(url: string, body: object) {
-		const res = await fetch(this.config.baseURL + url, {
-			headers: this.config.headers,
-			method: 'PUT',
+		try {
+			const res = await fetch(this.config.baseURL + url, {
+				headers: this.config.headers,
+				method: 'PUT',
 
-			body: JSON.stringify(body),
-		})
-		return await res.json()
+				body: JSON.stringify(body),
+			})
+			return await res.json()
+		} catch (e) {
+			return null
+		}
 	}
 	async delete(url: string) {
-		const res = await fetch(this.config.baseURL + url, {
-			headers: this.config.headers,
-			method: 'DELETE',
-		})
-		return await res.json()
+		try {
+			const res = await fetch(this.config.baseURL + url, {
+				headers: this.config.headers,
+				method: 'DELETE',
+			})
+			return await res.json()
+		} catch (e) {
+			return null
+		}
 	}
 }
 
