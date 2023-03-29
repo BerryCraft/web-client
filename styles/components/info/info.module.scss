@@ -2,6 +2,7 @@
 
 .wrapper {
     margin: auto 0;
+    margin-left: 35px;
 
     .download {
         display: flex;
@@ -50,8 +51,8 @@
 
     .groups {
         padding: 22px;
-        width: 296px;
-        height: 175px;
+        width: 396px;
+        height: 220px;
         font-size: 20px;
         font-weight: 400;
         background: #428542;
@@ -62,4 +63,47 @@
         border-radius: 8px;
         border: 3px solid #d39315;
     }
+}
+
+.vk__inner,
+.discord__inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 0;
+    margin-top: 15px;
+}
+
+.vk__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+.discord__inner {
+    background: #000;
+}
+
+// icons
+
+.discord__icon img,
+.vk__icon img {
+    width: 30px;
+    height: auto;
+    margin-right: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.vk__desc {
+    color: #000;
+    font-size: 12px;
+    margin-right: 23px;
+}
+
+.discord__desc {
+    color: #fff;
+    font-size: 12px;
+    margin-right: 23px;
 }

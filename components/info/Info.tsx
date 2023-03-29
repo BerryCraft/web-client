@@ -1,4 +1,6 @@
+import { images } from '@/helpers/imageLoader'
 import styles from '@/styles/components/info/info.module.scss'
+import Image from 'next/image'
 
 type Props = {
 	vkMembersCount: any
@@ -26,15 +28,39 @@ const Info = (props: Props) => {
 				</div>
 			</div>
 			<div className={styles.groups}>
+				{/* VK */}
 				<div className={styles.vk}>
 					Группа ВК <br />
-					<span>
-						{vkApiError ? 'Api Error' : props.vkMembersCount.response.count}
-					</span>
+					<div className={styles.vk__inner}>
+						<div className={styles.vk__icon}>
+							<Image alt='vk icon' src={images.vkIcon} />
+						</div>
+						<div className={styles.vk__desc}>
+							<h3>BerryCraft</h3>
+							<div>
+								{vkApiError ? 'Api Error' : props.vkMembersCount.response.count}
+							</div>
+						</div>
+					</div>
 				</div>
+				{/* VK END */}
+
+				{/* DISCORD */}
 				<div className={styles.discord}>
-					Группа ДС <br /> <span>{props.discordMembersCount}</span>{' '}
+					Группа ДС <br />
+					<div className={styles.discord__inner}>
+						<div className={styles.discord__icon}>
+							<Image src={images.discordIcon} alt='discord icon' />
+						</div>
+						<div className={styles.discord__desc}>
+							<h3>BerryCraft</h3>
+							<div>
+								<span>{props.discordMembersCount}</span>
+							</div>
+						</div>
+					</div>
 				</div>
+				{/* DISCORD END */}
 			</div>
 		</div>
 	)
