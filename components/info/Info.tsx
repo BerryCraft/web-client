@@ -37,7 +37,7 @@ const Info = (props: Props) => {
 						</div>
 						<div className={styles.vk__desc}>
 							<h3>BerryCraft</h3>
-							<div>
+							<div className='vts'>
 								{vkApiError ? 'Api Error' : props.vkMembersCount.response.count}
 							</div>
 						</div>
@@ -55,7 +55,7 @@ const Info = (props: Props) => {
 						<div className={styles.discord__desc}>
 							<h3>BerryCraft</h3>
 							<div>
-								<span>{props.discordMembersCount}</span>
+								<span className='dts'>{props.discordMembersCount}</span>
 							</div>
 						</div>
 					</div>
