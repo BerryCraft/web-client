@@ -18,3 +18,6 @@ const useUserStore = create<UserStore>(set => ({
       currentUser: null,
     })),
 }))
+
+
+export default useUserStore
