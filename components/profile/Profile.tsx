@@ -1,18 +1,16 @@
 import styles from '@/styles/components/profile/profile.module.scss'
 
-import { useTypedSelector } from '@/hooks/useTypedSelector'
+import skinService from '@/services/skinService'
+import useUserStore from '@/store/user.slice'
 import { User } from '@/types/entities/user.entity'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import { useActions } from '@/hooks/useActions'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import skinService from '@/services/skinService'
-import useUserStore from '@/zu-store/user.slice'
 const Profile = () => {
 	const user = Cookies.get('user') && JSON.parse(Cookies.get('user')!)
-	const userState: User | null = useUserStore(state => state.currentUser) 
+	const userState: User | null = useUserStore(state => state.currentUser)
 	const router = useRouter()
-	const { logout } = useActions()
+	const logout = useUserStore(state => state.logout)
 	const {
 		register,
 		handleSubmit,

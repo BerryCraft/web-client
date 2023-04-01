@@ -5,7 +5,7 @@ type ApiConfig = {
 class Api {
 	// 51.210.69.86:3500
 	readonly config: ApiConfig = {
-		baseURL: 'http://213.109.204.74:3500/api',
+		baseURL: 'http://localhost:3500/api',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
 			'Access-Control-Allow-Origin': '*',
@@ -19,6 +19,7 @@ class Api {
 			})
 			return await res.json()
 		} catch (e) {
+			console.log(`api error: ${e}`)
 			return null
 		}
 	}
@@ -32,6 +33,8 @@ class Api {
 			})
 			return await res.json()
 		} catch (e) {
+			console.log(`api error: ${e}`)
+
 			return null
 		}
 	}
@@ -45,6 +48,8 @@ class Api {
 			})
 			return await res.json()
 		} catch (e) {
+			console.log(`api error: ${e}`)
+
 			return null
 		}
 	}
@@ -58,6 +63,8 @@ class Api {
 			})
 			return await res.json()
 		} catch (e) {
+			console.log(`api error: ${e}`)
+
 			return null
 		}
 	}
@@ -69,6 +76,8 @@ class Api {
 			})
 			return await res.json()
 		} catch (e) {
+			console.log(`api error: ${e}`)
+
 			return null
 		}
 	}

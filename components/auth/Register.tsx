@@ -1,15 +1,14 @@
-import { RegisterDTO } from '@/types/dto/register.dto'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import styles from '@/styles/components/auth/register.module.scss'
-import { useActions } from '@/hooks/useActions'
-import { useTypedSelector } from '@/hooks/useTypedSelector'
-import { User } from '@/types/entities/user.entity'
 import authService from '@/services/authService'
+import useUserStore from '@/store/user.slice'
+import styles from '@/styles/components/auth/register.module.scss'
+import { RegisterDTO } from '@/types/dto/register.dto'
+import { User } from '@/types/entities/user.entity'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
+import { SubmitHandler, useForm } from 'react-hook-form'
 const Register = () => {
 	const router = useRouter()
-	const { login } = useActions()
+	const login = useUserStore(state => state.login)
 	const handleRegister: SubmitHandler<RegisterDTO> = async (
 		dto: RegisterDTO
 	) => {

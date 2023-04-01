@@ -1,5 +1,5 @@
-import { useActions } from '@/hooks/useActions'
 import authService from '@/services/authService'
+import useUserStore from '@/store/user.slice'
 import styles from '@/styles/components/auth/login.module.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
 import { User } from '@/types/entities/user.entity'
@@ -9,7 +9,7 @@ import router from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const Login = () => {
-	const { login } = useActions()
+	const login = useUserStore(state => state.login)
 	const handleLogin: SubmitHandler<LoginDTO> = async (dto: LoginDTO) => {
 		console.log(dto)
 		const user: { user: User; accesToken: string } = await authService.login(

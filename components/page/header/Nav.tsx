@@ -1,9 +1,9 @@
+import useUserStore from '@/store/user.slice'
+import styles from '@/styles/components/page/header/nav.module.scss'
 import { User } from '@/types/entities/user.entity'
 import Link from 'next/link'
-import styles from '@/styles/components/page/header/nav.module.scss'
-import useUserStore from '@/zu-store/user.slice'
 const Nav = () => {
-	const currentUser: User | null = useUserStore(state => state.currentUser) 
+	const currentUser: User | null = useUserStore(state => state.currentUser)
 
 	return (
 		<div className={styles.nav}>
