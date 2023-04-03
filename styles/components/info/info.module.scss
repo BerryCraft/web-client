@@ -1,8 +1,11 @@
 @import "@/styles/_fonts.scss";
 
 .wrapper {
-    margin: auto 0;
-    margin-left: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 65px;
 
     .download {
         display: flex;
@@ -12,7 +15,7 @@
         button {
             width: 300px;
             border-radius: 35px;
-            background-color: #e9c924;
+            background-color: #d39315;
             border: 3px solid #000;
             font-size: 34px;
             font-weight: bold;
@@ -33,10 +36,10 @@
         font-size: 28px;
         font-weight: 400;
         margin: 0 0 60px 0;
-        background: #428542;
+        background: #383838;
         color: #fff;
         border-radius: 8px;
-        border: 3px solid #d39315;
+        border: 3px solid #fff;
 
         .title {
             margin: 0 0 15px 0;
@@ -55,13 +58,13 @@
         height: 220px;
         font-size: 20px;
         font-weight: 400;
-        background: #428542;
+        background: #383838;
         color: #fff;
         display: flex;
         justify-content: space-between;
         text-align: center;
         border-radius: 8px;
-        border: 3px solid #d39315;
+        border: 3px solid #fff;
     }
 }
 

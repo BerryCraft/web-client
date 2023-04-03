@@ -8,11 +8,11 @@ type Props = {
 }
 
 const Info = (props: Props) => {
-	console.log('vk state')
-	console.log(props.vkMembersCount)
-	console.log('===========')
-	console.log('discord state')
-	console.log(props.discordMembersCount)
+	// console.log('vk state')
+	// console.log(props.vkMembersCount)
+	// console.log('===========')
+	// console.log('discord state')
+	// console.log(props.discordMembersCount)
 	let vkApiError = false
 	if (props.vkMembersCount.hasOwnProperty('error')) vkApiError = true
 	return (
