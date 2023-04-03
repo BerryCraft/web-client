@@ -6,18 +6,19 @@
 .field {
     width: 687px;
     height: 627px;
-    background: #d9d9d9;
+    background: #383838;
 }
 
 .title {
+    text-align: center;
+    background: #d39315;
     font-family: $fewText;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
-    line-height: 51px;
+    line-height: 59px;
     color: #ffffff;
     mix-blend-mode: difference;
-    margin-bottom: 44px;
 }
 
 .news__wrapper {

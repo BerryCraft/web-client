@@ -9,12 +9,14 @@ type Props = {
 const News = ({ posts }: Props) => {
 	if (posts !== null) posts = posts.reverse()
 
+	const myPosts: IPost[] = []
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>Новости</div>
 			<div className={styles.field}>
-				{posts
-					? posts.map((post: IPost) => {
+				{myPosts
+					? myPosts.map((post: IPost) => {
 							return (
 								<div className={styles.news__wrapper} key={post.id}>
 									<div className={styles.news__title}>
