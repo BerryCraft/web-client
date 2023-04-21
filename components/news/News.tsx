@@ -7,16 +7,18 @@ type Props = {
 }
 
 const News = ({ posts }: Props) => {
+	console.log(posts)
 	if (posts !== null) posts = posts.reverse()
 
+	// testing purposes
 	const myPosts: IPost[] = []
 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>Новости</div>
 			<div className={styles.field}>
-				{myPosts
-					? myPosts.map((post: IPost) => {
+				{posts
+					? posts.map((post: IPost) => {
 							return (
 								<div className={styles.news__wrapper} key={post.id}>
 									<div className={styles.news__title}>

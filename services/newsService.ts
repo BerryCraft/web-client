@@ -6,10 +6,11 @@ class NewsService {
 		return await api.post('/news/create', body)
 	}
 	async getAllPosts() {
-		return await api.get('/news/get')
+		return await api.get('/news/')
 	}
 	async getPost(id: number) {
-		return await api.get('/news/get/' + id)
+		// TODO: add getById on server
+		return await api.get('/news/' + id)
 	}
 }
 

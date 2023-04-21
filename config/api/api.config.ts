@@ -5,7 +5,7 @@ type ApiConfig = {
 class Api {
 	// 51.210.69.86:3500
 	readonly config: ApiConfig = {
-		baseURL: 'http://213.109.204.74:3500/api',
+		baseURL: 'http://localhost:3500/api',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
 			'Access-Control-Allow-Origin': '*',
@@ -17,9 +17,11 @@ class Api {
 			const res = await fetch(this.config.baseURL + url, {
 				headers: this.config.headers,
 			})
+			if (!res.ok) throw new Error(`Error: ${res.status}`)
 			return await res.json()
 		} catch (e) {
-			return null
+			console.error(e)
+			return e
 		}
 	}
 	async post(url: string, body: object) {
@@ -30,9 +32,12 @@ class Api {
 
 				body: JSON.stringify(body),
 			})
+			if (!res.ok) throw new Error(`Error: ${res.status}`)
+
 			return await res.json()
 		} catch (e) {
-			return null
+			console.error(e)
+			return e
 		}
 	}
 	async patch(url: string, body: object) {
@@ -43,9 +48,12 @@ class Api {
 
 				body: JSON.stringify(body),
 			})
+			if (!res.ok) throw new Error(`Error: ${res.status}`)
+
 			return await res.json()
 		} catch (e) {
-			return null
+			console.error(e)
+			return e
 		}
 	}
 	async put(url: string, body: object) {
@@ -56,9 +64,12 @@ class Api {
 
 				body: JSON.stringify(body),
 			})
+			if (!res.ok) throw new Error(`Error: ${res.status}`)
+
 			return await res.json()
 		} catch (e) {
-			return null
+			console.error(e)
+			return e
 		}
 	}
 	async delete(url: string) {
@@ -67,9 +78,12 @@ class Api {
 				headers: this.config.headers,
 				method: 'DELETE',
 			})
+			if (!res.ok) throw new Error(`Error: ${res.status}`)
+
 			return await res.json()
 		} catch (e) {
-			return null
+			console.error(e)
+			return e
 		}
 	}
 }
