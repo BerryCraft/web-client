@@ -32,7 +32,7 @@ export const login = createAsyncThunk<IAuthResponse, LoginDTO>(
 	}
 )
 // logout
-const logout = createAsyncThunk('auth/logout', async () =>
+export const logout = createAsyncThunk('auth/logout', async () =>
 	removeTokensStorage()
 )
 

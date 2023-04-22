@@ -1,6 +1,6 @@
 import { User } from '@/types/entities/user.entity'
 import { createSlice } from '@reduxjs/toolkit'
-import { login, register } from './actions'
+import { getNewTokens, login, logout, register } from './actions'
 
 type InitialState = {
 	user: User | null
@@ -37,6 +37,13 @@ export const userSlice = createSlice({
 		})
 		builder.addCase(login.fulfilled, (state, action) => {
 			state.isLoading = false
+			state.user = action.payload.user
+		})
+		builder.addCase(logout.fulfilled, (state, action) => {
+			state.isLoading = false
+			state.user = null
+		})
+		builder.addCase(getNewTokens.fulfilled, (state, action) => {
 			state.user = action.payload.user
 		})
 	},

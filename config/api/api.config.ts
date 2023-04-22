@@ -3,7 +3,6 @@ type ApiConfig = {
 	headers: HeadersInit
 }
 class Api {
-	// 51.210.69.86:3500
 	readonly config: ApiConfig = {
 		baseURL: 'http://localhost:3500/api',
 		headers: {
