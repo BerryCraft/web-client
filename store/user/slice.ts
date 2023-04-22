@@ -1,4 +1,5 @@
 import { User } from '@/types/entities/user.entity'
+import { getStoredLocal } from '@/utils/localStorage'
 import { createSlice } from '@reduxjs/toolkit'
 import { getNewTokens, login, logout, register } from './actions'
 
@@ -8,9 +9,7 @@ type InitialState = {
 }
 
 const initState: InitialState = {
-	user: localStorage.getItem('user')
-		? JSON.parse(localStorage.getItem('user') as string)
-		: null,
+	user: getStoredLocal('user'),
 	isLoading: false,
 }
 

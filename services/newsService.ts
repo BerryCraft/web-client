@@ -12,7 +12,8 @@ class NewsService {
 		return response
 	}
 	async getAllPosts() {
-		const response = axios.get<IPost[]>(NEWS_URL)
+		console.log(NEWS_URL)
+		const response = axios.get<IPost[]>(`${NEWS_URL}/`)
 		return response
 	}
 	async getPost(id: number) {
