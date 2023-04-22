@@ -3,7 +3,6 @@ import { axiauth } from '@/config/api/api.interceptor'
 import { LoginDTO } from '@/types/dto/login.dto'
 import { RegisterDTO } from '@/types/dto/register.dto'
 import { IAuthResponse } from '@/types/structs/auth/auth.types'
-import axios from 'axios'
 import Cookies from 'js-cookie'
 import { saveTokensStorage } from './auth.helper'
 
@@ -26,7 +25,7 @@ class AuthService {
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
 
-		const response = await axios.post<string, { data: IAuthResponse }>(
+		const response = await axiauth.post<string, { data: IAuthResponse }>(
 			process.env.SERVER_URL + '/auth/tokens',
 			{ refreshToken },
 			{ headers: getContentType() }

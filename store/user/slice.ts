@@ -1,25 +1,43 @@
 import { User } from '@/types/entities/user.entity'
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { login, register } from './actions'
 
 type InitialState = {
 	user: User | null
+	isLoading: boolean
 }
 
 const initState: InitialState = {
-	user: null,
+	user: localStorage.getItem('user')
+		? JSON.parse(localStorage.getItem('user') as string)
+		: null,
+	isLoading: false,
 }
 
 export const userSlice = createSlice({
 	name: 'user',
 	initialState: initState,
-	reducers: {
-		login: (state, action: PayloadAction<User>) => {
-			console.log(action.payload)
-			state.user = { ...action.payload }
-			console.log(state.user)
-		},
-		logout: state => {
-			state.user = null
-		},
+	reducers: {},
+	extraReducers: builder => {
+		builder.addCase(register.pending, state => {
+			state.isLoading = true
+		})
+		builder.addCase(register.rejected, state => {
+			state.isLoading = false
+		})
+		builder.addCase(register.fulfilled, (state, action) => {
+			state.isLoading = false
+			state.user = action.payload.user
+		})
+		builder.addCase(login.pending, state => {
+			state.isLoading = true
+		})
+		builder.addCase(login.rejected, state => {
+			state.isLoading = false
+		})
+		builder.addCase(login.fulfilled, (state, action) => {
+			state.isLoading = false
+			state.user = action.payload.user
+		})
 	},
 })

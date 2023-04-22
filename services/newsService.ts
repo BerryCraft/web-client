@@ -1,16 +1,29 @@
-import api from '@/config/api/api.config'
+import { axiauth } from '@/config/api/api.interceptor'
 import { PostDTO } from '@/types/dto/post.dto'
+import IPost from '@/types/structs/IPost'
+import axios from 'axios'
+
+const NEWS_URL = process.env.SERVER_URL + '/news'
 
 class NewsService {
 	async createPost(body: PostDTO) {
-		return await api.post('/news/create', body)
+		const response = axiauth.post<IPost>(`${NEWS_URL}/new`, body)
+
+		return response
 	}
 	async getAllPosts() {
-		return await api.get('/news/')
+		const response = axios.get<IPost[]>(NEWS_URL)
+		return response
 	}
 	async getPost(id: number) {
-		// TODO: add getById on server
-		return await api.get('/news/' + id)
+		const response = axios.get<IPost>(`${NEWS_URL}/${id}`)
+		return response
+	}
+	async updatePost(id: string) {
+		return axiauth.put(`${NEWS_URL}/e/${id}`)
+	}
+	async deletePost(id: string) {
+		return axiauth.delete(`${NEWS_URL}/d/${id}`)
 	}
 }
 

@@ -1,23 +1,36 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
+import {
+	FLUSH,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+	REHYDRATE,
+	persistReducer,
+	persistStore,
+} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import thunk from 'redux-thunk'
 import { userSlice } from './user/slice'
-
-const rootReducer = combineReducers({ user: userSlice.reducer })
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	timeout: 700,
+	whiteList: ['user'],
 }
+// 3:34:19
 
+const rootReducer = combineReducers({ user: userSlice.reducer })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
 	reducer: persistedReducer,
-	devTools: process.env.NODE_ENV !== 'production',
-	middleware: [thunk],
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}),
 })
+export const persistor = persistStore(store)
 
 export type TypeRootState = ReturnType<typeof rootReducer>
