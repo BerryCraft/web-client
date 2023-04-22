@@ -12,10 +12,16 @@ class Api {
 		},
 	}
 
-	async get(url: string) {
+	async get(url: string, token: string | null = null) {
+		let headers
+		if (token !== null)
+			headers = new Headers({
+				...this.config.headers,
+				Authorization: `Bearer ${token}`,
+			})
 		try {
 			const res = await fetch(this.config.baseURL + url, {
-				headers: this.config.headers,
+				headers: token !== null ? headers : this.config.headers,
 			})
 			if (!res.ok) throw new Error(`Error: ${res.status}`)
 			return await res.json()
@@ -24,10 +30,16 @@ class Api {
 			return e
 		}
 	}
-	async post(url: string, body: object) {
+	async post(url: string, body: object, token: string | null = null) {
+		let headers
+		if (token !== null)
+			headers = new Headers({
+				...this.config.headers,
+				Authorization: `Bearer ${token}`,
+			})
 		try {
 			const res = await fetch(this.config.baseURL + url, {
-				headers: this.config.headers,
+				headers: token !== null ? headers : this.config.headers,
 				method: 'POST',
 
 				body: JSON.stringify(body),
@@ -40,10 +52,16 @@ class Api {
 			return e
 		}
 	}
-	async patch(url: string, body: object) {
+	async patch(url: string, body: object, token: string | null = null) {
+		let headers
+		if (token !== null)
+			headers = new Headers({
+				...this.config.headers,
+				Authorization: `Bearer ${token}`,
+			})
 		try {
 			const res = await fetch(this.config.baseURL + url, {
-				headers: this.config.headers,
+				headers: token !== null ? headers : this.config.headers,
 				method: 'PATCH',
 
 				body: JSON.stringify(body),
@@ -56,10 +74,16 @@ class Api {
 			return e
 		}
 	}
-	async put(url: string, body: object) {
+	async put(url: string, body: object, token: string | null = null) {
+		let headers
+		if (token !== null)
+			headers = new Headers({
+				...this.config.headers,
+				Authorization: `Bearer ${token}`,
+			})
 		try {
 			const res = await fetch(this.config.baseURL + url, {
-				headers: this.config.headers,
+				headers: token !== null ? headers : this.config.headers,
 				method: 'PUT',
 
 				body: JSON.stringify(body),
@@ -72,10 +96,16 @@ class Api {
 			return e
 		}
 	}
-	async delete(url: string) {
+	async delete(url: string, token: string | null = null) {
+		let headers
+		if (token !== null)
+			headers = new Headers({
+				...this.config.headers,
+				Authorization: `Bearer ${token}`,
+			})
 		try {
 			const res = await fetch(this.config.baseURL + url, {
-				headers: this.config.headers,
+				headers: token !== null ? headers : this.config.headers,
 				method: 'DELETE',
 			})
 			if (!res.ok) throw new Error(`Error: ${res.status}`)

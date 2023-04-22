@@ -1,13 +1,39 @@
-import api from '@/config/api/api.config'
+import { getContentType } from '@/config/api/api.helper'
+import { axiauth } from '@/config/api/api.interceptor'
 import { LoginDTO } from '@/types/dto/login.dto'
 import { RegisterDTO } from '@/types/dto/register.dto'
+import { IAuthResponse } from '@/types/structs/auth/auth.types'
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import { saveTokensStorage } from './auth.helper'
 
 class AuthService {
-	async login(body: LoginDTO) {
-		return await api.post('/auth/login', body)
+	async login(dto: LoginDTO) {
+		const response = await axiauth.post<IAuthResponse>('/auth/login', dto)
+
+		if (response.data.accessToken) saveTokensStorage(response.data)
+
+		return response.data
 	}
-	async register(body: RegisterDTO) {
-		return await api.post('/auth/register', body)
+
+	async register(dto: RegisterDTO) {
+		const response = await axiauth.post<IAuthResponse>('/auth/register', dto)
+
+		if (response.data.accessToken) saveTokensStorage(response.data)
+
+		return response.data
+	}
+	async getNewTokens() {
+		const refreshToken = Cookies.get('refreshToken')
+
+		const response = await axios.post<string, { data: IAuthResponse }>(
+			process.env.SERVER_URL + '/auth/tokens',
+			{ refreshToken },
+			{ headers: getContentType() }
+		)
+		if (response.data.accessToken) saveTokensStorage(response.data)
+
+		return response.data
 	}
 }
 
