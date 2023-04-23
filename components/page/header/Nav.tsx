@@ -1,9 +1,8 @@
-import { useTypedSelector } from '@/hooks/useTypedSelector'
-import { User } from '@/types/entities/user.entity'
-import Link from 'next/link'
+import { useAuth } from '@/hooks/useAuth'
 import styles from '@/styles/components/page/header/nav.module.scss'
+import Link from 'next/link'
 const Nav = () => {
-	const currentUser: User | null = useTypedSelector(state => state.user.user)
+	const { user: currentUser } = useAuth()
 
 	return (
 		<div className={styles.nav}>

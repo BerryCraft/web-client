@@ -1,11 +1,11 @@
 import styles from '@/styles/components/page/header/headerprofile.module.scss'
 
-import { useTypedSelector } from '@/hooks/useTypedSelector'
-import { User } from '@/types/entities/user.entity'
+import { useAuth } from '@/hooks/useAuth'
 import Link from 'next/link'
 import SignUp from './SignUp'
+
 const AuthButtons = () => {
-	var currentUser: User | null = useTypedSelector(state => state.user.user)
+	const { user: currentUser } = useAuth()
 	return (
 		<>
 			{!currentUser ? (
