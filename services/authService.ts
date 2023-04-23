@@ -4,13 +4,13 @@ import { LoginDTO } from '@/types/dto/login.dto'
 import { RegisterDTO } from '@/types/dto/register.dto'
 import { IAuthResponse } from '@/types/structs/auth/auth.types'
 import Cookies from 'js-cookie'
-import { saveTokensStorage } from './auth.helper'
+import { saveCurrentUserToStorage, saveTokensStorage } from './auth.helper'
 
 class AuthService {
 	async login(dto: LoginDTO) {
 		const response = await axiauth.post<IAuthResponse>('/auth/login', dto)
 
-		if (response.data.accessToken) saveTokensStorage(response.data)
+		if (response.data.accessToken) saveCurrentUserToStorage(response.data)
 
 		return response.data
 	}
@@ -18,7 +18,7 @@ class AuthService {
 	async register(dto: RegisterDTO) {
 		const response = await axiauth.post<IAuthResponse>('/auth/register', dto)
 
-		if (response.data.accessToken) saveTokensStorage(response.data)
+		if (response.data.accessToken) saveCurrentUserToStorage(response.data)
 
 		return response.data
 	}

@@ -6,19 +6,21 @@ import VkApiHandler from '@/external/vk/VkApiHandler'
 import RootLayout from '@/layouts/root.layout'
 import newsService from '@/services/newsService'
 import styles from '@/styles/index.module.scss'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import IPost from '@/types/structs/IPost'
+import { GetStaticProps } from 'next'
 
-const HomePage = ({
-	posts,
-	vkMembers,
-	discordMembers,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+interface Props {
+	posts: IPost[]
+	vkMembers: number
+	discordMembers: number
+}
+const HomePage = ({ posts, vkMembers, discordMembers }: any) => {
 	return (
 		<RootLayout>
 			<Meta title='BerryCraft' description='BerryCraft' />
 			<div className={styles.background}>
 				<div className={styles.wrapper}>
-					<News posts={posts} />
+					<News posts={posts.data} />
 					<Info
 						vkMembersCount={vkMembers}
 						discordMembersCount={discordMembers}
@@ -31,10 +33,11 @@ const HomePage = ({
 
 export default HomePage
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
+export const getStaticProps: GetStaticProps = async ctx => {
 	let posts = await newsService.getAllPosts()
 	let vkMembers = await VkApiHandler.countGroupMembers()
 	let discordMembers = await DiscordApiHandler.getServerMembers()
+	// console.log(posts, vkMembers, discordMembers)
 	return {
 		props: {
 			posts,

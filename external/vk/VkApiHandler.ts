@@ -14,7 +14,7 @@ export default class VkApiHandler {
 		},
 	}
 
-	public static async countGroupMembers() {
+	public static async countGroupMembers(): Promise<number> {
 		const res = await fetch(this.requestConfig.uri, {
 			headers: this.requestConfig.headers,
 		})

@@ -7,8 +7,8 @@ type Props = {
 }
 
 const News = ({ posts }: Props) => {
-	console.log(posts)
-	if (posts !== null) posts = posts.reverse()
+	// console.log(posts)
+	if (posts !== null && typeof posts !== 'undefined') posts = posts.reverse()
 
 	// testing purposes
 	const myPosts: IPost[] = []

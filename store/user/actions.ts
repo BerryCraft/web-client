@@ -11,7 +11,7 @@ export const register = createAsyncThunk<IAuthResponse, RegisterDTO>(
 
 	async (data, thunkApi) => {
 		try {
-			const response = await authService.register(data)
+			const response = authService.register(data)
 			return response
 		} catch (error) {
 			return thunkApi.rejectWithValue(error)
@@ -24,7 +24,7 @@ export const login = createAsyncThunk<IAuthResponse, LoginDTO>(
 
 	async (data, thunkApi) => {
 		try {
-			const response = await authService.login(data)
+			const response = authService.login(data)
 			return response
 		} catch (error) {
 			return thunkApi.rejectWithValue(error)
@@ -32,9 +32,9 @@ export const login = createAsyncThunk<IAuthResponse, LoginDTO>(
 	}
 )
 // logout
-export const logout = createAsyncThunk('auth/logout', async () =>
+export const logout = createAsyncThunk('auth/logout', async () => {
 	removeTokensStorage()
-)
+})
 
 // get new tokens
 export const getNewTokens = createAsyncThunk<IAuthResponse>(
@@ -42,7 +42,7 @@ export const getNewTokens = createAsyncThunk<IAuthResponse>(
 
 	async (_, thunkApi) => {
 		try {
-			const response = await authService.getNewTokens()
+			const response = authService.getNewTokens()
 			return response
 		} catch (error) {
 			if (errorCatch(error) === 'jwt expired') thunkApi.dispatch(logout())

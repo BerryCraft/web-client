@@ -2,7 +2,6 @@ import { User } from '@/types/entities/user.entity'
 
 export interface IUserState {
 	email: string
-	isAdmin: boolean
 }
 
 export interface IInitialState {
@@ -16,7 +15,5 @@ export interface ITokens {
 }
 
 export interface IAuthResponse extends ITokens {
-	user: User & {
-		isAdmin: boolean
-	}
+	user: User
 }

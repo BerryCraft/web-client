@@ -1,63 +1,80 @@
+import { useActions } from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
+import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import styles from '@/styles/components/auth/login.module.scss'
 import { RegisterDTO } from '@/types/dto/register.dto'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import styles from '@/styles/components/auth/register.module.scss'
-import { useActions } from '@/hooks/useActions'
-import { useTypedSelector } from '@/hooks/useTypedSelector'
-import { User } from '@/types/entities/user.entity'
-import authService from '@/services/authService'
-import Cookies from 'js-cookie'
-import { useRouter } from 'next/navigation'
 const Register = () => {
-	const router = useRouter()
-	const { login } = useActions()
-	const handleRegister: SubmitHandler<RegisterDTO> = async (
-		dto: RegisterDTO
-	) => {
-		console.log(dto)
-		const user: { user: User; accesToken: string } = await authService.register(
-			dto
-		)
-		Cookies.set('user', JSON.stringify(user), { expires: 1200 })
-		login(user.user)
-		router.push('/')
-	}
+	useAuthRedirect()
+	const { isLoading } = useAuth()
+	const { login, register: reg } = useActions()
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<RegisterDTO>()
+		reset,
+	} = useForm<RegisterDTO>({
+		mode: 'onChange',
+	})
+	const handleRegister: SubmitHandler<RegisterDTO> = data => {
+		reg(data)
+		reset()
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<form onSubmit={handleSubmit(handleRegister)}>
+				<div className='field__title'>Ник</div>
+				<input
+					type='text'
+					placeholder='Ник'
+					{...register('username', {
+						required: 'username is required',
+						minLength: {
+							value: 3,
+							message: `username should be greater than 8 symbols`,
+						},
+					})}
+				/>
+				{errors.username && <p>{errors.username.message}</p>}
+
+				<div className='field__title'>Почта</div>
+				<input
+					type='email'
+					placeholder='Почта'
+					{...register('email', {
+						required: 'email is required',
+					})}
+				/>
+				{errors.email && <p>{errors.email.message}</p>}
+
 				<div className='field__title'>Логин</div>
+
 				<input
 					type='text'
 					placeholder='Логин'
-					{...register('login', { required: true })}
+					{...register('login', { required: 'login is required' })}
 				/>
+				{errors.login && <p>{errors.login.message}</p>}
 				<div className='field__title'>Пароль</div>
 				<input
 					type='password'
 					placeholder='Пароль'
-					{...register('password', { required: true })}
+					{...register('password', {
+						required: 'password is required',
+						minLength: {
+							value: 8,
+							message: `pasword should be greater than 8 symbols`,
+						},
+					})}
 				/>
-				<div className='field__title'>Email</div>
-				<input
-					type='email'
-					placeholder='Email'
-					{...register('email', { required: true })}
-				/>
+				{errors.password && <p>{errors.password.message}</p>}
 
-				<button type='submit'>Регистрация</button>
+				<button type='submit' className='login__button'>
+					Войти
+				</button>
 			</form>
-			{/* errors */}
-
-			{/* <div className={styles.errors}>
-				<div>Login</div>
-				<div>Password</div>
-			</div> */}
-
-			{/* errors */}
 		</div>
 	)
 }
