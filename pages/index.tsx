@@ -20,7 +20,7 @@ const HomePage = ({ posts, vkMembers, discordMembers }: any) => {
 			<Meta title='BerryCraft' description='BerryCraft' />
 			<div className={styles.background}>
 				<div className={styles.wrapper}>
-					<News posts={posts.data} />
+					<News posts={posts} />
 					<Info
 						vkMembersCount={vkMembers}
 						discordMembersCount={discordMembers}
