@@ -1,45 +1,61 @@
-@import "@/styles/_fonts.scss";
+@import '@/styles/_fonts.scss';
 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  input {
+    padding: 15px 0;
+    border-radius: 11px;
+    text-align: center;
+    width: 452px;
+    height: 56px;
+    margin-bottom: 53px;
+    background: #d9d9d9;
+    font-size: 28px;
+  }
+  .login__button {
+    background: #38da1f;
+    border-radius: 13px;
+    width: 230px;
+    height: 70px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    input {
-        padding: 15px 0;
-        border-radius: 11px;
-        text-align: center;
-        width: 452px;
-        height: 56px;
-        margin-bottom: 53px;
-        background: #d9d9d9;
-        font-size: 28px;
-    }
-    .login__button {
-        background: #38da1f;
-        border-radius: 13px;
-        width: 230px;
-        height: 70px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 40px;
-        color: #000;
-        font-weight: bold;
-        transition: 0.4s;
-    }
-    .login__button:hover {
-        background: #33c81c;
-    }
-    // .login__button:active {
-    //   padding: 20px 20px;
-    // }
+    font-size: 40px;
+    color: #000;
+    font-weight: bold;
+    transition: 0.4s;
+  }
+  .login__button:hover {
+    background: #33c81c;
+  }
+  // .login__button:active {
+  //   padding: 20px 20px;
+  // }
 }
 
 .field__title {
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 38px;
-    font-family: $actor;
-    color: #000000;
-    margin-bottom: 24px;
-    font-weight: bold;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 38px;
+  font-family: $actor;
+  color: #000000;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+.error {
+  border: 3px solid red;
+  border-radius: 15px;
+  padding: 15px;
+  background: rgb(224, 71, 71);
+}
+
+.error__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error__message {
+  color: #fff;
+  font-weight: bold;
 }
