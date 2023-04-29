@@ -1,11 +1,11 @@
 import styles from '@/styles/components/page/header/headerprofile.module.scss'
 
-import { useAuth } from '@/hooks/useAuth'
+import { useAutheficatedUser } from '@/hooks/useAutheficatedUser'
 import Link from 'next/link'
 import SignUp from './SignUp'
 
 const AuthButtons = () => {
-	const { user: currentUser } = useAuth()
+	const { user: currentUser } = useAutheficatedUser()
 	return (
 		<>
 			{!currentUser ? (

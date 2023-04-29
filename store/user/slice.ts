@@ -1,12 +1,12 @@
 import { User } from '@/types/entities/user.entity'
 import { getStoredLocal } from '@/utils/localStorage'
-import { createSlice } from '@reduxjs/toolkit'
+import { SerializedError, createSlice } from '@reduxjs/toolkit'
 import { getNewTokens, login, logout, register } from './actions'
 
 type InitialState = {
 	user: User | null
 	isLoading: boolean
-	error: object | null | unknown
+	error: SerializedError | null
 }
 
 const initState: InitialState = {
@@ -25,7 +25,8 @@ export const userSlice = createSlice({
 		})
 		builder.addCase(register.rejected, (state, action) => {
 			state.isLoading = false
-			state.error = action.payload
+			state.error = action.error
+			console.log(state.error)
 		})
 		builder.addCase(register.fulfilled, (state, action) => {
 			state.isLoading = false
@@ -36,7 +37,8 @@ export const userSlice = createSlice({
 		})
 		builder.addCase(login.rejected, (state, action) => {
 			state.isLoading = false
-			state.error = action.payload
+			state.error = action.error
+			console.log(state.error)
 		})
 		builder.addCase(login.fulfilled, (state, action) => {
 			state.isLoading = false

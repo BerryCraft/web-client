@@ -1,8 +1,8 @@
-import { useAuth } from '@/hooks/useAuth'
+import { useAutheficatedUser } from '@/hooks/useAutheficatedUser'
 import styles from '@/styles/components/page/header/nav.module.scss'
 import Link from 'next/link'
 const Nav = () => {
-	const { user: currentUser } = useAuth()
+	const { user: currentUser } = useAutheficatedUser()
 
 	return (
 		<div className={styles.nav}>

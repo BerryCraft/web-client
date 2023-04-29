@@ -1,13 +1,13 @@
 import styles from '@/styles/components/profile/profile.module.scss'
 
 import { useActions } from '@/hooks/useActions'
-import { useAuth } from '@/hooks/useAuth'
+import { useAutheficatedUser } from '@/hooks/useAuth'
 import skinService from '@/services/skinService'
 import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const Profile = () => {
-	const { user: userState } = useAuth()
+	const { user: userState } = useAutheficatedUser()
 	const router = useRouter()
 	const { logout } = useActions()
 	const {

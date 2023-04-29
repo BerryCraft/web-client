@@ -1,4 +1,4 @@
-@import '@/styles/_fonts.scss';
+@import "@/styles/_fonts.scss";
 form {
   display: flex;
   flex-direction: column;
@@ -15,8 +15,9 @@ form {
   }
   .login__button {
     background: #38da1f;
-    border-radius: 13px;
-    width: 230px;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 15px;
     height: 70px;
     display: flex;
     justify-content: center;
