@@ -6,11 +6,13 @@ import { getNewTokens, login, logout, register } from './actions'
 type InitialState = {
 	user: User | null
 	isLoading: boolean
+	error: object | null | unknown
 }
 
 const initState: InitialState = {
 	user: getStoredLocal('user'),
 	isLoading: false,
+	error: null,
 }
 
 export const userSlice = createSlice({
@@ -21,8 +23,9 @@ export const userSlice = createSlice({
 		builder.addCase(register.pending, state => {
 			state.isLoading = true
 		})
-		builder.addCase(register.rejected, state => {
+		builder.addCase(register.rejected, (state, action) => {
 			state.isLoading = false
+			state.error = action.payload
 		})
 		builder.addCase(register.fulfilled, (state, action) => {
 			state.isLoading = false
@@ -31,8 +34,9 @@ export const userSlice = createSlice({
 		builder.addCase(login.pending, state => {
 			state.isLoading = true
 		})
-		builder.addCase(login.rejected, state => {
+		builder.addCase(login.rejected, (state, action) => {
 			state.isLoading = false
+			state.error = action.payload
 		})
 		builder.addCase(login.fulfilled, (state, action) => {
 			state.isLoading = false
