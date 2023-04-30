@@ -1,7 +1,7 @@
 import styles from '@/styles/components/profile/profile.module.scss'
 
 import { useActions } from '@/hooks/useActions'
-import { useAutheficatedUser } from '@/hooks/useAuth'
+import { useAutheficatedUser } from '@/hooks/useAutheficatedUser'
 import skinService from '@/services/skinService'
 import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'

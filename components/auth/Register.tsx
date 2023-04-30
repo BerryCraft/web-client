@@ -22,8 +22,13 @@ const Register = () => {
 		mode: 'onChange',
 	})
 	const handleRegister: SubmitHandler<RegisterDTO> = data => {
-		reg(data)
-		reset()
+		try {
+			reg(data)
+		} catch (error: any) {
+			console.log(`error: ${error}`)
+		} finally {
+			reset()
+		}
 	}
 
 	return (

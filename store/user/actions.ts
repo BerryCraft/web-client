@@ -13,7 +13,7 @@ export const register = createAsyncThunk<IAuthResponse, RegisterDTO>(
 		try {
 			const response = authService.register(data)
 			return response
-		} catch (error) {
+		} catch (error: any) {
 			return thunkApi.rejectWithValue(error)
 		}
 	}
