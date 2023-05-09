@@ -1,17 +1,26 @@
 import { useActions } from '@/hooks/useActions'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
 import { useAutheficatedUser } from '@/hooks/useAutheficatedUser'
+import useFirstRender from '@/hooks/useFirstRender'
 import styles from '@/styles/components/auth/login.module.scss'
 import { RegisterDTO } from '@/types/dto/register.dto'
 import Error from '@/ui/Error'
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 const Register = () => {
 	useAuthRedirect()
 
 	const { error } = useAutheficatedUser()
 	const { login, register: reg } = useActions()
-	console.log('hello')
-	console.log(error)
+	const isFirstRender = useFirstRender()
+	useEffect(() => {
+		if (isFirstRender) {
+			console.log('from UE')
+			console.log(error)
+		} else {
+			console.log('reloaded')
+		}
+	}, [error])
 
 	const {
 		register,
@@ -22,13 +31,8 @@ const Register = () => {
 		mode: 'onChange',
 	})
 	const handleRegister: SubmitHandler<RegisterDTO> = data => {
-		try {
-			reg(data)
-		} catch (error: any) {
-			console.log(`error: ${error}`)
-		} finally {
-			reset()
-		}
+		reg(data)
+		reset()
 	}
 
 	return (
@@ -84,7 +88,7 @@ const Register = () => {
 				<button type='submit' className='login__button'>
 					Зарегистрироваться
 				</button>
-				{error && <Error message={error.message} />}
+				{error && !isFirstRender && <Error message={error.message} />}
 			</form>
 		</div>
 	)

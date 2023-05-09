@@ -1,14 +1,25 @@
 import { useActions } from '@/hooks/useActions'
 import { useAutheficatedUser } from '@/hooks/useAutheficatedUser'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import useFirstRender from '@/hooks/useFirstRender'
 import styles from '@/styles/components/auth/login.module.scss'
 import { LoginDTO } from '@/types/dto/login.dto'
 import Error from '@/ui/Error'
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 const Login = () => {
 	useAuthRedirect()
-	const { isLoading } = useAutheficatedUser()
+	const { error, isLoading } = useAutheficatedUser()
 	const { login } = useActions()
+	const isFirstRender = useFirstRender()
+	useEffect(() => {
+		if (isFirstRender) {
+			console.log('from UE')
+			console.log(error)
+		} else {
+			console.log('reloaded')
+		}
+	}, [error])
 
 	const {
 		register,
@@ -52,6 +63,7 @@ const Login = () => {
 				<button type='submit' className='login__button'>
 					Войти
 				</button>
+				{error && !isFirstRender && <Error message={error.message} />}
 			</form>
 		</div>
 	)
