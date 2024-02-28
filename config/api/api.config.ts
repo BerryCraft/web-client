@@ -4,7 +4,7 @@ type ApiConfig = {
 }
 class Api {
 	readonly config: ApiConfig = {
-		baseURL: 'http://localhost:3500/api',
+		baseURL: 'https://lucky-ruby-lapel.cyclic.app/api',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
 			'Access-Control-Allow-Origin': '*',
